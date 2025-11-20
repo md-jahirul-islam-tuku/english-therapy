@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Therapy</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://kit.fontawesome.com/21de3a4f2a.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="">
+  <div class="fixed top-0 w-full z-10 bg-base-300 border-b-3 border-neutral-300">
+    <nav class="navbar container mx-auto">
+      <div class="flex-1">
+        <a href="index.html" class="btn btn-ghost text-xl pl-0">English<img src="assets/logo.png" alt="">
+          <span>থেরাপি</span></a>
+      </div>
+      <div class="flex-none">
+        <ul class="menu menu-horizontal px-1 gap-4 text-indigo-700 font-semibold">
+          <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button class="menu-btn"
+              onclick="location.href='#faq'"><i class="fa-solid fa-circle-question"></i> FAQ</button>
+          </li>
+          <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button class="menu-btn"
+              onclick="location.href='#learn'"><i class="fa-solid fa-book-open"></i> Learn</button></li>
+          <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button><i
+                class="fa-solid fa-right-from-bracket"></i>
+              Logout</button></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <header class="hero pt-20">
+    <div class="hero-content flex-col lg:flex-row-reverse gap-20">
+      <img src="assets/hero-student.png" class="w-1/2 rounded-lg" />
+      <div>
+        <h1 class="text-5xl font-bold"><span class="text-sky-500">English</span> is Easy!!</h1>
+        <p class="py-6">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান,
+          আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+        <fieldset class="fieldset">
+          <input type="text" class="input" placeholder="Enter your name" />
+          <input type="password" class="input my-4" placeholder="Password" />
+        </fieldset>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+    </div>
+  </header>
+  <main class="container mx-auto">
+    <!-- vocabulary section -->
+    <section id="learn" class="text-center pt-28">
+      <h1 class="text-4xl font-bold"><span class="text-sky-500">Let's</span> Learn Vocabularies</h1>
+      <div class="flex-none">
+        <ul id="btn-lesson-container" class="menu menu-horizontal px-1 gap-4 text-indigo-700 font-semibold my-10">
+        </ul>
+        <div id="vocabulary-container" class="bg-base-200 rounded-3xl p-5 grid grid-cols-3 gap-5">
+          <div class="py-20 col-span-full mx-auto">
+            <p class="text-stone-500">আপনি এখনো কোন Lesson Select করেন নি</p>
+            <h1 class="text-3xl font-semibold mt-4 text-stone-800">একটি Lesson Select করুন</h1>
+          </div>
+        </div>
+    </section>
+    <section id="faq" class="pt-28">
+      <h1 class="text-4xl font-bold text-center"><span class="text-sky-500">Frequently</span> Asked Questions</h1>
+      <div class="my-10 flex flex-col gap-y-3">
+        <div class="collapse collapse-plus bg-base-200 border border-base-300">
+          <input type="radio" name="my-accordion-3" checked="checked" />
+          <div class="collapse-title font-semibold">How do I create an account?</div>
+          <div class="collapse-content text-sm">Click the "Sign Up" button in the top right corner and follow the
+            registration process.</div>
+        </div>
+        <div class="collapse collapse-plus bg-base-200 border border-base-300">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title font-semibold">I forgot my password. What should I do?</div>
+          <div class="collapse-content text-sm">Click on "Forgot Password" on the login page and follow the instructions
+            sent to your email.</div>
+        </div>
+        <div class="collapse collapse-plus bg-base-200 border border-base-300">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title font-semibold">How do I update my profile information?</div>
+          <div class="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.
+          </div>
+        </div>
+        <div class="collapse collapse-plus bg-base-200 border border-base-300">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title font-semibold">How do I update my profile information?</div>
+          <div class="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.
+          </div>
+        </div>
+        <div class="collapse collapse-plus bg-base-200 border border-base-300">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title font-semibold">How do I update my profile information?</div>
+          <div class="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <hr class="border-rose-100 border-2 mt-70">
+  <footer class="container mx-auto flex justify-between items-center py-25">
+    <div>
+      <a href="index.html" class="btn btn-ghost text-xl pl-0">English<img src="assets/logo.png" alt="">
+        <span>থেরাপি</span></a>
+      <h1 class="pt-7 pb-2">ইংরেজি শিখুন সহজে</h1>
+      <p>Providing JIT-Tech Applications since 2025</p>
+    </div>
+    <div>
+      <p class="pb-3">FOLLOWING US</p>
+      <div>
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-youtube"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- Open the modal using ID.showModal() method -->
+  <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+    <div id="modal-container" class="modal-box">
+      
+    </div>
+  </dialog>
+  <script src="index.js"></script>
+</body>
+
+</html>
