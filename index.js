@@ -1,15 +1,26 @@
+function hideLoader() {
+  document.getElementById('loader').classList.add('hidden')
+  document.getElementById('vocabulary-container').classList.remove('hidden')
+};
+
+function showLoader() {
+  document.getElementById('loader').classList.remove('hidden')
+  document.getElementById('vocabulary-container').classList.add('hidden')
+};
+
+hideLoader();
+
 function loadLessonBtn() {
   fetch('https://openapi.programming-hero.com/api/levels/all')
     .then(res => res.json())
     .then(data => displayLessonBtn(data.data))
 }
-
 function displayLessonBtn(buttons) {
   for (const btn of buttons) {
     const btnLessonContainer = document.getElementById('btn-lesson-container');
     const li = document.createElement('li');
     li.innerHTML = `
-  <a class="option-btn" onclick="loadLessonVocabulary(${btn.level_no})" class="font-bold"><i class="fa-solid fa-book-open"></i> Lesson - ${btn.level_no}</a>
+  <a id="level-${btn.level_no}" onclick="loadLessonVocabulary(${btn.level_no})" class="font-bold"><i class="fa-solid fa-book-open"></i> Lesson - ${btn.level_no}</a>
   `
     li.classList.add('border-indigo-700', 'border', 'rounded-sm', 'hover:bg-indigo-700', 'hover:text-white')
     btnLessonContainer.append(li);
@@ -28,14 +39,21 @@ function displayLessonBtn(buttons) {
 loadLessonBtn()
 
 function loadLessonVocabulary(id) {
+  showLoader();
   fetch(`https://openapi.programming-hero.com/api/level/${id}`)
     .then(res => res.json())
     .then(data => displayLessonVocabulary(data.data))
+    .catch(error => {
+      console.error("API Error:", error);
+    })
+    .finally(() => {
+      hideLoader();
+    });
 }
 
 function displayLessonVocabulary(object) {
   document.getElementById('vocabulary-container').innerHTML = '';
-  if (object.length == 0) {
+  if (object.length === 0) {
     document.getElementById('vocabulary-container').innerHTML = `
     <div class="py-5 col-span-full mx-auto">
       <img class="mx-auto" src="assets/alert-error.png" alt="">
@@ -62,17 +80,26 @@ function displayLessonVocabulary(object) {
 `
     div.classList.add('card', 'bg-base-100', 'card-md', 'shadow-sm')
     vocabularyContainer.append(div);
-  }
+  };
 }
 
+// active button class add & remove function
 const buttons = document.querySelectorAll(".menu-btn");
 buttons.forEach(btn => {
   btn.addEventListener("click", () => {
-    buttons.forEach(b => b.classList.remove('bg-indigo-700', 'text-white')); // Remove active from all
-    btn.classList.add('bg-indigo-700', 'text-white'); // Add to clicked one
+    buttons.forEach(b => b.classList.remove('bg-indigo-700', 'text-white'));
+    btn.classList.add('bg-indigo-700', 'text-white');
   });
 });
 
+// smooth scrolling function for faq & learn
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+// modal api load function
 function loadModal(id) {
   document.getElementById('my_modal_5').showModal();
   fetch(`https://openapi.programming-hero.com/api/word/${id}`)
@@ -82,17 +109,18 @@ function loadModal(id) {
     })
 }
 
+// modal display function
 function modalDisplay(id) {
   console.log(id);
   const modalContainer = document.getElementById('modal-container');
-modalContainer.innerHTML=`
+  modalContainer.innerHTML = `
 <h3 class="text-2xl font-bold">${id.word} - (${id.pronunciation})</h3>
       <p class="text-lg font-bold mt-3">Meaning</p>
       <p>${id.meaning}</p>
       <h4 class="text-lg font-bold mt-3">Example</h4>
       <p>${id.sentence}</p>
       <h4 class="my-5 font-bold">সমার্থক শব্দগুলো</h4>
-      <p>
+      <p class="text-lg">
         <span class="bg-sky-100 p-3 rounded-md border border-sky-200 py-1">${id.synonyms[0]}</span>
         <span class="bg-sky-100 p-3 rounded-md border border-sky-200 py-1">${id.synonyms[1]}</span>
         <span class="bg-sky-100 p-3 rounded-md border border-sky-200 py-1">${id.synonyms[2]}</span>

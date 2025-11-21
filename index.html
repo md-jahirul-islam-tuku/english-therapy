@@ -20,10 +20,10 @@
       <div class="flex-none">
         <ul class="menu menu-horizontal px-1 gap-4 text-indigo-700 font-semibold">
           <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button class="menu-btn"
-              onclick="location.href='#faq'"><i class="fa-solid fa-circle-question"></i> FAQ</button>
+              onclick="scrollToSection('faq')"><i class="fa-solid fa-circle-question"></i> FAQ</button>
           </li>
           <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button class="menu-btn"
-              onclick="location.href='#learn'"><i class="fa-solid fa-book-open"></i> Learn</button></li>
+              onclick="scrollToSection('learn')"><i class="fa-solid fa-book-open"></i> Learn</button></li>
           <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button><i
                 class="fa-solid fa-right-from-bracket"></i>
               Logout</button></li>
@@ -53,6 +53,76 @@
       <div class="flex-none">
         <ul id="btn-lesson-container" class="menu menu-horizontal px-1 gap-4 text-indigo-700 font-semibold my-10">
         </ul>
+        <!-- loader -->
+        <div id="loader" class="bg-base-200 rounded-3xl p-5 grid grid-cols-3 gap-5">
+          <div class="bg-base-100 p-5 shadow-sm rounded-xl">
+            <div class="flex flex-col gap-4 items-center">
+              <div class="skeleton h-6 w-28"></div>
+              <div class="skeleton h-3 w-44 my-2"></div>
+              <div class="skeleton h-7 w-36"></div>
+            </div>
+            <div class="mt-10 flex justify-between">
+              <div class="skeleton h-8 w-8"></div>
+              <div class="skeleton h-8 w-8"></div>
+            </div>
+          </div>
+          <div class="bg-base-100 p-5 shadow-sm rounded-xl">
+            <div class="flex flex-col gap-4 items-center">
+              <div class="skeleton h-6 w-28"></div>
+              <div class="skeleton h-3 w-44 my-2"></div>
+              <div class="skeleton h-7 w-36"></div>
+            </div>
+            <div class="mt-10 flex justify-between">
+              <div class="skeleton h-8 w-8"></div>
+              <div class="skeleton h-8 w-8"></div>
+            </div>
+          </div>
+          <div class="bg-base-100 p-5 shadow-sm rounded-xl">
+            <div class="flex flex-col gap-4 items-center">
+              <div class="skeleton h-6 w-28"></div>
+              <div class="skeleton h-3 w-44 my-2"></div>
+              <div class="skeleton h-7 w-36"></div>
+            </div>
+            <div class="mt-10 flex justify-between">
+              <div class="skeleton h-8 w-8"></div>
+              <div class="skeleton h-8 w-8"></div>
+            </div>
+          </div>
+          <div class="bg-base-100 p-5 shadow-sm rounded-xl">
+            <div class="flex flex-col gap-4 items-center">
+              <div class="skeleton h-6 w-28"></div>
+              <div class="skeleton h-3 w-44 my-2"></div>
+              <div class="skeleton h-7 w-36"></div>
+            </div>
+            <div class="mt-10 flex justify-between">
+              <div class="skeleton h-8 w-8"></div>
+              <div class="skeleton h-8 w-8"></div>
+            </div>
+          </div>
+          <div class="bg-base-100 p-5 shadow-sm rounded-xl">
+            <div class="flex flex-col gap-4 items-center">
+              <div class="skeleton h-6 w-28"></div>
+              <div class="skeleton h-3 w-44 my-2"></div>
+              <div class="skeleton h-7 w-36"></div>
+            </div>
+            <div class="mt-10 flex justify-between">
+              <div class="skeleton h-8 w-8"></div>
+              <div class="skeleton h-8 w-8"></div>
+            </div>
+          </div>
+          <div class="bg-base-100 p-5 shadow-sm rounded-xl">
+            <div class="flex flex-col gap-4 items-center">
+              <div class="skeleton h-6 w-28"></div>
+              <div class="skeleton h-3 w-44 my-2"></div>
+              <div class="skeleton h-7 w-36"></div>
+            </div>
+            <div class="mt-10 flex justify-between">
+              <div class="skeleton h-8 w-8"></div>
+              <div class="skeleton h-8 w-8"></div>
+            </div>
+          </div>
+        </div>
+        <!-- vocabulary container -->
         <div id="vocabulary-container" class="bg-base-200 rounded-3xl p-5 grid grid-cols-3 gap-5">
           <div class="py-20 col-span-full mx-auto">
             <p class="text-stone-500">আপনি এখনো কোন Lesson Select করেন নি</p>
@@ -116,7 +186,7 @@
   <!-- Open the modal using ID.showModal() method -->
   <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
     <div id="modal-container" class="modal-box">
-      
+
     </div>
   </dialog>
   <script src="index.js"></script>
