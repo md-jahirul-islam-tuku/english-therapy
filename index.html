@@ -8,17 +8,32 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://kit.fontawesome.com/21de3a4f2a.js" crossorigin="anonymous"></script>
+  <style>
+    /* Hide caret everywhere by default */
+    * {
+      caret-color: transparent !important;
+    }
+    /* Show caret only in input & textarea */
+    input,
+    textarea {
+      caret-color: auto !important;
+    }
+  </style>
 </head>
 
 <body class="">
-  <div class="fixed top-0 w-full z-10 bg-base-300 border-b-3 border-neutral-300">
+  <div id="scrollTopBtn" onclick="scrollToSection('header-section')"
+    class="hidden fixed z-12 bottom-5 right-3 bg-slate-200 text-primary p-1 rounded-md cursor-pointer">
+    <i class="fa-solid fa-angles-up text-3xl"></i>
+  </div>
+  <navbar class="fixed top-0 w-full z-10 bg-base-300 border-b-3 border-neutral-300">
     <nav class="navbar container mx-auto">
-      <div class="flex-1">
-        <a href="index.html" class="btn btn-ghost text-xl pl-0">English<img src="assets/logo.png" alt="">
+      <div onclick="location.reload()" class="flex-1">
+        <a class="btn btn-ghost text-xl pl-0">English<img src="assets/logo.png" alt="">
           <span>থেরাপি</span></a>
       </div>
       <div class="flex-none">
-        <ul class="menu menu-horizontal px-1 gap-4 text-indigo-700 font-semibold">
+        <ul id="menu-bar" class=" menu menu-horizontal px-1 gap-4 text-indigo-700 font-semibold">
           <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button class="menu-btn"
               onclick="scrollToSection('faq')"><i class="fa-solid fa-circle-question"></i> FAQ</button>
           </li>
@@ -30,8 +45,8 @@
         </ul>
       </div>
     </nav>
-  </div>
-  <header class="hero pt-20">
+  </navbar>
+  <header id="header-section" class="hero pt-16">
     <div class="hero-content flex-col lg:flex-row-reverse gap-20">
       <img src="assets/hero-student.png" class="w-1/2 rounded-lg" />
       <div>
@@ -46,7 +61,7 @@
       </div>
     </div>
   </header>
-  <main class="container mx-auto">
+  <main id="main" class="container mx-auto mb-40">
     <!-- vocabulary section -->
     <section id="learn" class="text-center pt-28">
       <h1 class="text-4xl font-bold"><span class="text-sky-500">Let's</span> Learn Vocabularies</h1>
@@ -166,7 +181,7 @@
       </div>
     </section>
   </main>
-  <hr class="border-rose-100 border-2 mt-70">
+  <hr class="border-rose-100 border-2">
   <footer class="container mx-auto flex justify-between items-center py-25">
     <div>
       <a href="index.html" class="btn btn-ghost text-xl pl-0">English<img src="assets/logo.png" alt="">
@@ -184,11 +199,12 @@
     </div>
   </footer>
   <!-- Open the modal using ID.showModal() method -->
-  <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-    <div id="modal-container" class="modal-box">
-
-    </div>
+  <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
+    <div id="modal-container" class="modal-box"></div>
   </dialog>
+
+
+
   <script src="index.js"></script>
 </body>
 

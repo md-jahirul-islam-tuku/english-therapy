@@ -20,9 +20,9 @@ function displayLessonBtn(buttons) {
     const btnLessonContainer = document.getElementById('btn-lesson-container');
     const li = document.createElement('li');
     li.innerHTML = `
-  <a id="level-${btn.level_no}" onclick="loadLessonVocabulary(${btn.level_no})" class="font-bold"><i class="fa-solid fa-book-open"></i> Lesson - ${btn.level_no}</a>
-  `
-    li.classList.add('border-indigo-700', 'border', 'rounded-sm', 'hover:bg-indigo-700', 'hover:text-white')
+    <a id="level-${btn.level_no}" onclick="loadLessonVocabulary(${btn.level_no})" class="font-bold"><i class="fa-solid fa-book-open"></i> Lesson - ${btn.level_no}</a>
+    `
+    li.classList.add('border-indigo-700', 'border', 'rounded-sm', 'hover:bg-indigo-700', 'hover:text-white', 'option-btn')
     btnLessonContainer.append(li);
 
     // funtion for showing selected button
@@ -101,7 +101,29 @@ function scrollToSection(id) {
 
 // modal api load function
 function loadModal(id) {
-  document.getElementById('my_modal_5').showModal();
+
+  const content = document.getElementById("modal-container");
+  content.innerHTML = `
+    <div class="border-2 border-sky-100 p-5 rounded-lg">
+      <div class="flex flex-col   gap-3">
+        <div class="skeleton h-7 w-44"></div>
+        <div class="skeleton h-5 w-28"></div>
+        <div class="skeleton h-5 w-32"></div>
+        <div class="skeleton h-5 w-32"></div>
+        <div class="skeleton h-3 w-3/4"></div>
+        <div class="skeleton h-7 w-32"></div>
+        <div class="flex justify-start gap-3">
+          <div class="skeleton h-8 w-20"></div>
+          <div class="skeleton h-8 w-20"></div>
+          <div class="skeleton h-8 w-20"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 flex justify-between">
+        <div class="skeleton h-8 w-1/2">
+    </div>
+  `;
+  document.getElementById('my_modal').showModal();
   fetch(`https://openapi.programming-hero.com/api/word/${id}`)
     .then(res => res.json())
     .then(data => {
@@ -111,24 +133,42 @@ function loadModal(id) {
 
 // modal display function
 function modalDisplay(id) {
-  console.log(id);
   const modalContainer = document.getElementById('modal-container');
   modalContainer.innerHTML = `
-<h3 class="text-2xl font-bold">${id.word} - (${id.pronunciation})</h3>
+    <div class="border border-sky-100 p-5 rounded-lg">
+      <h3 class="text-2xl font-bold">${id.word} - (${id.pronunciation})</h3>
       <p class="text-lg font-bold mt-3">Meaning</p>
       <p>${id.meaning}</p>
       <h4 class="text-lg font-bold mt-3">Example</h4>
       <p>${id.sentence}</p>
-      <h4 class="my-5 font-bold">সমার্থক শব্দগুলো</h4>
+      <h4 class="my-3 font-bold">সমার্থক শব্দগুলো</h4>
       <p class="text-lg">
         <span class="bg-sky-100 p-3 rounded-md border border-sky-200 py-1">${id.synonyms[0]}</span>
         <span class="bg-sky-100 p-3 rounded-md border border-sky-200 py-1">${id.synonyms[1]}</span>
         <span class="bg-sky-100 p-3 rounded-md border border-sky-200 py-1">${id.synonyms[2]}</span>
       </p>
-      <div class="modal-action justify-start">
-        <form method="dialog">
-          <button class="btn btn-primary">Complete Learning</button>
-        </form>
-      </div>
-`
+    </div>
+    <div class="modal-action justify-start mt-5">
+      <form method="dialog">
+        <button class="btn btn-primary">Complete Learning</button>
+      </form>
+    </div>
+    `
 }
+
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    scrollBtn.classList.remove("hidden"); // Show button
+  } else {
+    scrollBtn.classList.add("hidden"); // Hide button
+  }
+});
+
+scrollBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
