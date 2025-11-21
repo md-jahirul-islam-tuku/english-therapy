@@ -8,11 +8,13 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://kit.fontawesome.com/21de3a4f2a.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     /* Hide caret everywhere by default */
     * {
       caret-color: transparent !important;
     }
+
     /* Show caret only in input & textarea */
     input,
     textarea {
@@ -28,40 +30,41 @@
   </div>
   <navbar class="fixed top-0 w-full z-10 bg-base-300 border-b-3 border-neutral-300">
     <nav class="navbar container mx-auto">
-      <div onclick="location.reload()" class="flex-1">
+      <div class="flex-1">
         <a class="btn btn-ghost text-xl pl-0">English<img src="assets/logo.png" alt="">
           <span>থেরাপি</span></a>
       </div>
       <div class="flex-none">
-        <ul id="menu-bar" class=" menu menu-horizontal px-1 gap-4 text-indigo-700 font-semibold">
+        <ul id="menu-bar" class="hidden menu menu-horizontal px-1 gap-4 text-indigo-700 font-semibold">
           <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button class="menu-btn"
               onclick="scrollToSection('faq')"><i class="fa-solid fa-circle-question"></i> FAQ</button>
           </li>
           <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button class="menu-btn"
               onclick="scrollToSection('learn')"><i class="fa-solid fa-book-open"></i> Learn</button></li>
-          <li class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white"><button><i
-                class="fa-solid fa-right-from-bracket"></i>
-              Logout</button></li>
+          <li id="logoutBtn" class="border-indigo-700 border rounded-sm  hover:bg-indigo-700 hover:text-white">
+            <button><i class="fa-solid fa-right-from-bracket"></i>
+              Logout</button>
+          </li>
         </ul>
       </div>
     </nav>
   </navbar>
-  <header id="header-section" class="hero pt-16">
+  <header id="loginSection" class="hero pt-16">
     <div class="hero-content flex-col lg:flex-row-reverse gap-20">
       <img src="assets/hero-student.png" class="w-1/2 rounded-lg" />
       <div>
         <h1 class="text-5xl font-bold"><span class="text-sky-500">English</span> is Easy!!</h1>
         <p class="py-6">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান,
-          আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+          আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ . . . . .</p>
         <fieldset class="fieldset">
-          <input type="text" class="input" placeholder="Enter your name" />
-          <input type="password" class="input my-4" placeholder="Password" />
+          <input id="username" type="text" class="input validator" placeholder="Enter your name" required />
+          <input id="password" type="password" class="input my-4 validator" placeholder="Password" required />
         </fieldset>
-        <button class="btn btn-primary">Get Started</button>
+        <button id="loginBtn" class="btn btn-primary">Get Started</button>
       </div>
     </div>
   </header>
-  <main id="main" class="container mx-auto mb-40">
+  <main id="mainSection" class="hidden container mx-auto mb-40">
     <!-- vocabulary section -->
     <section id="learn" class="text-center pt-28">
       <h1 class="text-4xl font-bold"><span class="text-sky-500">Let's</span> Learn Vocabularies</h1>
@@ -184,7 +187,7 @@
   <hr class="border-rose-100 border-2">
   <footer class="container mx-auto flex justify-between items-center py-25">
     <div>
-      <a href="index.html" class="btn btn-ghost text-xl pl-0">English<img src="assets/logo.png" alt="">
+      <a class="btn btn-ghost text-xl pl-0">English<img src="assets/logo.png" alt="">
         <span>থেরাপি</span></a>
       <h1 class="pt-7 pb-2">ইংরেজি শিখুন সহজে</h1>
       <p>Providing JIT-Tech Applications since 2025</p>
@@ -192,9 +195,9 @@
     <div>
       <p class="pb-3">FOLLOWING US</p>
       <div>
-        <a href=""><i class="fa-brands fa-facebook"></i></a>
-        <a href=""><i class="fa-brands fa-youtube"></i></a>
-        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a><i class="fa-brands fa-facebook cursor-pointer"></i></a>
+        <a><i class="fa-brands fa-youtube cursor-pointer"></i></a>
+        <a><i class="fa-brands fa-instagram cursor-pointer"></i></a>
       </div>
     </div>
   </footer>
@@ -202,9 +205,6 @@
   <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
     <div id="modal-container" class="modal-box"></div>
   </dialog>
-
-
-
   <script src="index.js"></script>
 </body>
 

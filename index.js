@@ -103,6 +103,7 @@ function scrollToSection(id) {
 function loadModal(id) {
 
   const content = document.getElementById("modal-container");
+  content.innerHTML = '';
   content.innerHTML = `
     <div class="border-2 border-sky-100 p-5 rounded-lg">
       <div class="flex flex-col   gap-3">
@@ -170,5 +171,107 @@ scrollBtn.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth"
+  });
+});
+
+// document.getElementById("loginBtn").addEventListener("click", () => {
+//   const user = document.getElementById("username").value;
+//   const pass = document.getElementById("password").value;
+//   // Simple demo login (you can replace with real API check)
+//   if (user === "admin" && pass === "123456") {
+
+//     // Hide login section
+//     document.getElementById("loginSection").classList.add("hidden");
+//     // Show main section
+//     document.getElementById("mainSection").classList.remove("hidden");
+//     // Show menu section
+//     document.getElementById("menu-bar").classList.remove("hidden");
+//     alert("Login Successful! Thank You.");
+//   } else {
+//     alert("Invalid username or password!");
+//   }
+// });
+
+document.getElementById("loginBtn").addEventListener("click", () => {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  // 1. Username empty → alert
+  if (username === "") {
+    // alert("Please enter your name.");
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Please enter your name."
+    });
+    return;
+  }
+  const namePattern = /^[A-Za-z ]+$/;
+  if (!namePattern.test(username)) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Name must contain letters only!"
+    });
+    return;
+  }
+
+  if (password === "") {
+    // alert("Password must be 8 digit");
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Password enter 8 digit password!"
+    });
+    return;
+  }
+
+  // 2. Wrong password → alert
+  if (isNaN(password)) {
+    // alert("Password must be a number!");
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Password must be a number!"
+    });
+    return;
+  }
+  if (password.length !== 8) {
+    // alert("Password must be 8 digit");
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Password must be 8 digit!"
+    });
+    return;
+  }
+
+  // 3. Success → alert
+  // alert("Login Successful!");
+  Swal.fire({
+    title: "Good job!",
+    text: "Your Login Successful!",
+    icon: "success"
+  });
+
+  // Hide login, show main section
+  document.getElementById("loginSection").classList.add("hidden");
+  document.getElementById("mainSection").classList.remove("hidden");
+  document.getElementById("menu-bar").classList.remove("hidden");
+});
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You want to logout?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Logout!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.reload();
+    }
   });
 });
